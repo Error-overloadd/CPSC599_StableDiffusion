@@ -1,0 +1,11 @@
+Model Information:
+* title:	Concrete Plant Pot  - 3D scan Quixel Megascans
+* source:	https://sketchfab.com/3d-models/concrete-plant-pot-3d-scan-quixel-megascans-8f807ef362c04ef0a976325f3b0fe73f
+* author:	Guay0 (https://sketchfab.com/Guay0)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Concrete Plant Pot  - 3D scan Quixel Megascans" (https://sketchfab.com/3d-models/concrete-plant-pot-3d-scan-quixel-megascans-8f807ef362c04ef0a976325f3b0fe73f) by Guay0 (https://sketchfab.com/Guay0) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
