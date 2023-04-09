@@ -9,13 +9,15 @@
 </head>
 <body>
 <div style="position: absolute; z-index: 1000">
-    <button id="example-start-button">Start</button>
-    <button id="example-pause-button">Refesh</button>
+
+    <button id="example-start-button">start</button>
+    <button id="example-refresh-button">refresh</button>
 
     <input id="change-button"></input>
 </div>
 <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
+
         <a-asset-item id="avatarModel" src="./3Dmodel/scene.gltf"></a-asset-item>
         <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item>
     </a-assets>
@@ -27,15 +29,32 @@
         document.addEventListener("DOMContentLoaded", function() {
             const sceneEl = document.querySelector('a-scene');
             const arSystem = sceneEl.systems["mindar-image-system"];
-            const changeButton = document.querySelector("#example-start-button");
+
+            const changeButton = document.querySelector("#example-refresh-button");
+            const startButton = document.querySelector("example-start-button")
+            //2. add model names in the list
+            const modelList=['#noteModel','#avatarModel']
+
 
             changeButton.addEventListener('click',()=>{
+                //get random element in array model list
+                const position = Math.floor(Math.random()*(modelList.length));
+                console.log(position);
+                console.log(modelList[position]);
                 document.getElementById("model").removeAttribute('gltf-model');
-                document.getElementById("model").setAttribute('gltf-model', '#noteModel');
+                document.getElementById("model").setAttribute('gltf-model', modelList[position]);
+
+            });
+            startButton.addEventListener('click', ()=>{
                 arSystem.start();
             });
+
+
+
         });
     </script>
 </a-scene>
 </body>
+
 </html>
+
