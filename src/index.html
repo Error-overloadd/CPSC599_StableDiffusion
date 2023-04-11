@@ -12,14 +12,127 @@
 
     <button id="example-start-button">start</button>
     <button id="example-refresh-button">refresh</button>
+    <input id="text-change" placeholder="Test input"></input>
 
-    <input id="change-button"></input>
 </div>
-<a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<!-- Item 1  -->
+<a-scene mindar-image="imageTargetSrc: ./card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
 
         <a-asset-item id="avatarModel" src="./3Dmodel/scene.gltf"></a-asset-item>
         <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item>
+        <!-- <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>4
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item> -->
+    </a-assets>
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <a-entity id="target" mindar-image-target="targetIndex: 0">
+        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+    </a-entity>
+    <script>
+
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const sceneEl = document.querySelector('a-scene');
+            const arSystem = sceneEl.systems["mindar-image-system"];
+
+            const changeButton = document.querySelector("#example-refresh-button");
+            const startButton = document.querySelector("#example-start-button");
+            const changetext = document.querySelector("#text-change").value;
+            //2. add model names in the list
+           
+
+            // same the ke word with different texture
+            function itemChangedInArray(params){
+                const position = Math.floor(Math.random()*(params.length));
+                console.log(position);
+                console.log(params[position]);
+                const value = params[position];
+                
+
+
+                document.getElementById("model").removeAttribute('gltf-model');
+                document.getElementById("model").setAttribute('gltf-model', params[position]);
+                console.log("dsfadsfas:"+ value);
+                params = params.filter(item => item !== value)
+               
+                console.log("sdfasdf:"+params);
+            }
+
+
+
+            changeButton.addEventListener('click',()=>{
+               
+                if (changetext===''){
+
+
+                }
+                else if(changetext===''){
+
+                }
+                else if(changetext===''){
+
+                }
+
+
+
+
+                const modelList=['#noteModel','#avatarModel']
+                itemChangedInArray(modelList)
+
+            });
+            // allow the user type the different words to generate the image
+            startButton.addEventListener('click', ()=>{
+                
+
+                if (changetext===''){
+
+
+                }
+                else if(changetext===''){
+
+                }
+                else if(changetext===''){
+
+                }
+                
+            });
+
+
+
+        });
+    </script>
+
+</a-scene>
+<!-- Item 2 -->
+<!-- <s-scene mindar-image = "imageTargetSrc:"  color- space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-assets>
+
+        <a-asset-item id="avatarModel" src="./3Dmodel/scene.gltf"></a-asset-item>
+        <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>4
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="" src=""></a-asset-item>
     </a-assets>
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity id="target" mindar-image-target="targetIndex: 0">
@@ -31,13 +144,15 @@
             const arSystem = sceneEl.systems["mindar-image-system"];
 
             const changeButton = document.querySelector("#example-refresh-button");
-            const startButton = document.querySelector("example-start-button")
+            const startButton = document.querySelector("example-start-button");
+            const changetext = document.getElementById("text-change").value;
             //2. add model names in the list
             const modelList=['#noteModel','#avatarModel']
 
 
             changeButton.addEventListener('click',()=>{
                 //get random element in array model list
+                console.log(changetext);
                 const position = Math.floor(Math.random()*(modelList.length));
                 console.log(position);
                 console.log(modelList[position]);
@@ -53,7 +168,8 @@
 
         });
     </script>
-</a-scene>
+</s-scene> -->
+
 </body>
 
 </html>
