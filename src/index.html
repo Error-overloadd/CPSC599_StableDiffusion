@@ -19,9 +19,9 @@
 <a-scene mindar-image="imageTargetSrc: ./card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
 
-        <a-asset-item id="avatarModel" src="./3Dmodel/scene.gltf"></a-asset-item>
-        <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item>
-        <!-- <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="OriginalChair" src="./chairwithsky/Chair (Original 3D Model)/Chair.gltf"></a-asset-item>
+        <!-- <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item> -->
+        <a-asset-item id="Chiarwithsky1" src="./testChair/testChair.gltf"></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
@@ -33,11 +33,11 @@
         <a-asset-item id="" src=""></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item> -->
+        <a-asset-item id="" src=""></a-asset-item>
     </a-assets>
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity id="target" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0.1" scale="0.1 0.1 0.1" src="#OriginalChair" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
     </a-entity>
     <script>
 
@@ -87,7 +87,7 @@
 
 
 
-                const modelList=['#noteModel','#avatarModel']
+                const modelList=['#Chiarwithsky1','#OriginalChair']
                 itemChangedInArray(modelList)
 
             });
@@ -114,61 +114,6 @@
     </script>
 
 </a-scene>
-<!-- Item 2 -->
-<!-- <s-scene mindar-image = "imageTargetSrc:"  color- space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-    <a-assets>
-
-        <a-asset-item id="avatarModel" src="./3Dmodel/scene.gltf"></a-asset-item>
-        <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>4
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-    </a-assets>
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-    <a-entity id="target" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-    </a-entity>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sceneEl = document.querySelector('a-scene');
-            const arSystem = sceneEl.systems["mindar-image-system"];
-
-            const changeButton = document.querySelector("#example-refresh-button");
-            const startButton = document.querySelector("example-start-button");
-            const changetext = document.getElementById("text-change").value;
-            //2. add model names in the list
-            const modelList=['#noteModel','#avatarModel']
-
-
-            changeButton.addEventListener('click',()=>{
-                //get random element in array model list
-                console.log(changetext);
-                const position = Math.floor(Math.random()*(modelList.length));
-                console.log(position);
-                console.log(modelList[position]);
-                document.getElementById("model").removeAttribute('gltf-model');
-                document.getElementById("model").setAttribute('gltf-model', modelList[position]);
-
-            });
-            startButton.addEventListener('click', ()=>{
-                arSystem.start();
-            });
-
-
-
-        });
-    </script>
-</s-scene> -->
 
 </body>
 
