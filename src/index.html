@@ -16,18 +16,19 @@
 
 </div>
 <!-- Item 1  -->
-<a-scene mindar-image="imageTargetSrc: ./card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-scene mindar-image="imageTargetSrc: ./targets (5).mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
 
         <a-asset-item id="OriginalChair" src="./chairwithsky/Chair (Original 3D Model)/Chair.gltf"></a-asset-item>
         <!-- <a-asset-item id="noteModel" src="./note_model/scene.gltf"></a-asset-item> -->
         <a-asset-item id="Chiarwithsky1" src="./testChair/testChair.gltf"></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
-        <a-asset-item id="" src=""></a-asset-item>
+        <a-asset-item id="spaceHabitate1" src="./spaceHabitate/Chair.gltf"></a-asset-item>
+        <a-asset-item id="Chairwithsky2" src="./stars_celestial_space/stars_celestial_space.gltf"></a-asset-item>
+        <a-asset-item id="Chairwithsky3 " src="./nice_stars_in_the_sky/stars_celestial_space.gltf"></a-asset-item>
+        <a-asset-item id="donald_trump_pikachu" src="./pikachutrunp/pikachutrunp.gltf"></a-asset-item>
+        
+        <a-asset-item id="tvmodel" src="./TV_model_ORIGINAL_3D/TV_model_ORIGINAL_3D.gltf"></a-asset-item>
+        <a-asset-item id="tv1" src="./TV_model_BEAITFUL-BANFF_3D/TV_model_BEAITFUL-BANFF_3D.gltf"></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>
         <a-asset-item id="" src=""></a-asset-item>4
         <a-asset-item id="" src=""></a-asset-item>
@@ -37,7 +38,11 @@
     </a-assets>
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity id="target" mindar-image-target="targetIndex: 0">
-        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0.1" scale="0.1 0.1 0.1" src="#OriginalChair" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        <a-gltf-model id="model" rotation="0 0 0 " position="0 0 0" scale="0.5 0.5 0.5" src="#OriginalChair" animation="property: position; to: 0 -1 0; dur: 1000; easing: easeInOutQuad; loop: false; dir: alternate"></a-gltf-model>
+    </a-entity>
+    <a-entity id="target1" mindar-image-target="targetIndex: 1">
+        <a-gltf-model id="model1" rotation="0 0 0" position="0 -1 0" scale="0.005 0.005 0.005" src="#tvmodel" animation="property: position; to: 0 -1 0; dur: 1000; easing: easeInOutQuad; loop: false; dir: alternate"></a-gltf-model>
+        <!-- <a-gltf-model id="model1" rotation="0 0 0 " position="0 3 0" scale="0.3 0.3 0.3" src="#car" animation="property: position; to: 0 -1 0; dur: 1000; easing: easeInOutQuad; loop: false; dir: alternate"></a-gltf-model> -->
     </a-entity>
     <script>
 
@@ -48,7 +53,7 @@
 
             const changeButton = document.querySelector("#example-refresh-button");
             const startButton = document.querySelector("#example-start-button");
-            const changetext = document.querySelector("#text-change").value;
+            
             //2. add model names in the list
            
 
@@ -58,52 +63,60 @@
                 console.log(position);
                 console.log(params[position]);
                 const value = params[position];
-                
-
-
                 document.getElementById("model").removeAttribute('gltf-model');
                 document.getElementById("model").setAttribute('gltf-model', params[position]);
-                console.log("dsfadsfas:"+ value);
-                params = params.filter(item => item !== value)
+                document.getElementById("model1").removeAttribute('gltf-model');
+                document.getElementById("model1").setAttribute('gltf-model', params[position]);
+                // console.log("dsfadsfas:"+ value);
+                // params = params.filter(item => item !== value)
                
-                console.log("sdfasdf:"+params);
+                // console.log("sdfasdf:"+params);
             }
 
 
 
             changeButton.addEventListener('click',()=>{
-               
-                if (changetext===''){
-
-
-                }
-                else if(changetext===''){
+                const changetext = document.querySelector("#text-change").value;
+                if (changetext==='beautiful space sky with stars'){
+                    const modelList=['#Chiarwithsky1','#Chairwithsky2','#Chairwithsky3']
+                    itemChangedInArray(modelList);
 
                 }
-                else if(changetext===''){
-
+                else if(changetext==='a beautiful up close view of a orbital space habitat'){
+                    const modelList=['#spaceHabitate1']
+                    itemChangedInArray(modelList);
+                }
+                else if(changetext==='donald trump pikachu'){
+                    const modelList=['#donald_trump_pikachu']
+                    itemChangedInArray(modelList);
                 }
 
 
 
 
-                const modelList=['#Chiarwithsky1','#OriginalChair']
+                // const modelList=['#Chiarwithsky1','#OriginalChair','#spaceHabitate1','#donald_trump_pikachu']
+                const modelList=['#Chiarwithsky1']
                 itemChangedInArray(modelList)
 
             });
             // allow the user type the different words to generate the image
             startButton.addEventListener('click', ()=>{
-                
+                const changetext = document.querySelector("#text-change").value;
 
-                if (changetext===''){
-
-
+                if (changetext==='beautiful space sky with stars'){
+                    const modelList=['#Chiarwithsky1','#Chairwithsky2','#Chairwithsky3']
+                    itemChangedInArray(modelList);
                 }
-                else if(changetext===''){
-
+                else if(changetext==='a beautiful up close view of a orbital space habitat'){
+                    const modelList=['#spaceHabitate1']
+                    itemChangedInArray(modelList);
                 }
-                else if(changetext===''){
-
+                else if(changetext==='donald trump pikachu'){
+                    const modelList=['#donald_trump_pikachu']
+                    itemChangedInArray(modelList);
+                }else if (changetext==='beautiful banff'){
+                    const modelList=['#tv1']
+                    itemChangedInArray(modelList);
                 }
                 
             });
